@@ -1,6 +1,9 @@
 const puppeteer = require('puppeteer');
 
 (async () => {
+    // Dinamik import kullanarak open modülünü yükle
+    const open = (await import('open')).default;
+
     // Start timer to measure execution time
     console.time('İşlem Süresi : ');
 
@@ -34,11 +37,16 @@ const puppeteer = require('puppeteer');
             const calendarItem = seriesElement.closest('.calendar-item');
             const dateText = calendarItem ? calendarItem.querySelector('.date').innerText.replace(/\n/g, ' ').trim() : null;
 
+            // Get the link inside .dw-detail a
+            const detailLinkElement = seriesElement.querySelector('.dw-detail a');
+            const detailLink = detailLinkElement ? detailLinkElement.href : null;
+
             return {
                 hasFilterStyle,
                 statusText,
                 nameText,
-                dateText
+                dateText,
+                detailLink
             };
         } else {
             return null;
@@ -53,6 +61,16 @@ const puppeteer = require('puppeteer');
         console.log('Tarih : ', result.dateText);
         console.log('Bölüm : ', 'One Piece ' + result.nameText);
         console.log('Statü : ', result.statusText ? result.statusText : 'Yayında Değil');
+
+        // Check if statusText contains 'yayınlandı' (case-insensitive)
+        if (result.statusText && result.statusText.toLowerCase().includes('yayınlandı')) {
+            if (result.detailLink) {
+                console.log('Link Açılıyor : ', result.detailLink);
+                await open(result.detailLink);
+            } else {
+                console.log('Link bulunamadı');
+            }
+        }
     } else {
         console.log('One Piece Bulunamadı :(');
     }
