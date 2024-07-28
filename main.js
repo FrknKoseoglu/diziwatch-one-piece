@@ -38,7 +38,7 @@ const puppeteer = require('puppeteer');
             const dateText = calendarItem ? calendarItem.querySelector('.date').innerText.replace(/\n/g, ' ').trim() : null;
 
             // Get the link inside .dw-detail a
-            const detailLinkElement = seriesElement.querySelector('.dw-detail a');
+            const detailLinkElement = seriesElement.querySelector('a.dw-detail');
             const detailLink = detailLinkElement ? detailLinkElement.href : null;
 
             return {
