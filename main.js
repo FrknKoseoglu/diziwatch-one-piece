@@ -58,14 +58,14 @@ const puppeteer = require('puppeteer');
   process.stdout.write('\n');
 
   if (result) {
-    console.log('Tarih : ', result.dateText);
-    console.log('Bölüm : ', 'One Piece ' + result.nameText);
-    console.log('Statü : ', result.statusText ? result.statusText : 'Yayında Değil');
+    console.log('Tarih :', result.dateText);
+    console.log('Bölüm :', 'One Piece ' + result.nameText);
+    console.log('Statü :', result.statusText ? result.statusText : 'Yayında Değil');
 
     // Check if statusText contains 'yayınlandı' (case-insensitive)
     if (result.statusText && result.statusText.toLowerCase().includes('yayınlandı')) {
       if (result.detailLink) {
-        console.log('Link Açılıyor : ', result.detailLink);
+        console.log('Link Açılıyor :', result.detailLink);
         await open(result.detailLink);
       } else {
         console.log('Link bulunamadı');
@@ -105,9 +105,10 @@ const puppeteer = require('puppeteer');
           return episodeNameElement ? episodeNameElement.innerText.trim() : null;
         });
 
-        console.log('Tarih : ', partText);
-        console.log('Bölüm : ' + previousEpisodeNum + ' ' + episodeName);
-        console.log('Link : ', previousEpisodeLink);
+        console.log('Tarih :', partText);
+        console.log('Bölüm :', previousEpisodeNum);
+        console.log('Adı :', episodeName);
+        console.log('Link :',  previousEpisodeLink);
 
       } else {
         console.log('Bir Önceki Bölüm Linki bulunamadı');
