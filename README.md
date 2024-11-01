@@ -1,3 +1,10 @@
+## DEMO
+![](https://github.com/FrknKoseoglu/diziwatch-one-piece/blob/main/demo.gif?raw=true)
+
+## SONUÇ
+![](https://github.com/FrknKoseoglu/diziwatch-one-piece/blob/main/demo.png?raw=true)
+
+
 # One Piece Yayın Durumu Kontrolü
 
 Bu proje, Puppeteer kullanarak "One Piece" dizisinin yayın durumunu kontrol eden ve belirli bilgileri terminalde gösteren bir Node.js uygulamasıdır. Uygulama, `https://diziwatch.net/calendar/` sayfasındaki belirli elementleri bulur ve bunların içeriklerini kontrol eder.
